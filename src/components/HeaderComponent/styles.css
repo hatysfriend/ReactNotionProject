@@ -1,0 +1,44 @@
+.Header{
+  grid-area: header;
+
+  /* display flex and align-items center will align all items 'vertically-centered' */
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  width: 100%;
+
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #2f3437
+}
+
+.userHeader{
+  margin-left: auto;
+  /* creates 10px padding for left & right */
+  padding: 0 30px;
+  white-space: nowrap;
+}
+.menuOpenBtnHeader{
+  margin-left:10px;
+  transition: background 200ms ease-in 0s;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.logoutBtnHeader{
+  margin-right:10px;
+}
+
+.shareBtnHeader, .updateBtnHeader, .settingsBtnHeader, .logoutBtnHeader {
+  /* user-select: none; */
+  transition: background 200ms ease-in 0s;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.menuOpenBtnHeader:hover, .shareBtnHeader:hover, .updateBtnHeader:hover, .settingsBtnHeader:hover, .logoutBtnHeader:hover  {
+  background: #9999993a;
+}

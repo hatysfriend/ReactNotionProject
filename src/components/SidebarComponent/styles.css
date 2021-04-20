@@ -1,0 +1,102 @@
+.Sidebar{
+  grid-area: nav; 
+
+  height: 100vh;
+  min-width: 300px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #373c3f;
+
+  display:flex;
+  flex-direction: column;
+  
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
+}
+
+.SidebarTop{
+  display:flex;
+  padding: 30px 15px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: default;
+}
+.SidebarTop:hover .MenuOpenIcon{
+  opacity: 1;
+  transition: opacity 1000ms linear;
+}
+
+.MenuOpenIcon{
+  cursor: pointer;
+  align-items: center;
+  white-space: nowrap;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  opacity: 0;
+  margin-left:auto;
+  color: rgba(255, 255, 255, 0.6) !important;
+  
+}
+
+.NotesSection-heading{
+  margin: 5px 15px 0px 15px;
+  font-size: smaller;
+}
+.NotesSection{
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.SiIcons{
+  padding: 0 5px;
+}
+
+.SidebarItem{
+  cursor: pointer;
+  padding: 15px 15px;
+  display:flex;
+  justify-content: space-between;
+  word-wrap: break-word; 
+}
+
+.newPageBtn{
+  margin-top: auto;
+  cursor: pointer;
+  padding: 15px 0px;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.newPageBtnLabel{
+  padding: 0px 15px;
+}
+
+.newPageBtn:hover, .SidebarItem:hover{
+  background-color: #474d52;
+}
+
+
+/* When <ListItem> selected == true */
+.MuiListItem-root.Mui-selected{
+  background-color: #474d52 !important;
+  color: white;
+}
+
+
+.SidebarItemSettings{ 
+  /* position item to the right */
+  margin-left: auto;
+  visibility: hidden;
+}
+
+.SidebarItem:hover .SidebarItemSettings{
+  visibility: visible;
+}
+
+.sidebarIcon{
+  margin-right: 8px;
+  object-fit: cover;
+  border-radius: 3px;
+  width: 18px;
+  height: 18px;
+}

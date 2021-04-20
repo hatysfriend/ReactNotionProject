@@ -1,0 +1,231 @@
+.Editor {
+  grid-area: editor;
+  /*Layout*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /*Size*/
+  /* padding-top: 70px; */
+  max-height: 95vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+  /*Positioning*/
+  position: relative;
+  z-index: 0;
+  flex-grow: 1; 
+  
+  /*Styles*/
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #2f3437
+}
+
+.mainContentContainer{
+  z-index:2;
+  width: 60%;
+  /* padding-top: 50px; */
+}
+
+
+/* --------Block Component CSS--------- */
+.blockContainer{
+  position: relative;
+  /* display: flex;
+  align-items: center; */
+
+  margin-left: -10em;
+  margin-right: -10em;
+
+  padding-left: 10em;
+  padding-right: 10em;
+}
+.contentButtons{
+  position:absolute;
+  top:10px;
+  left: 7em;
+  color:#818181;
+  display: none;
+  cursor: pointer;
+}
+.blockContainer:hover .contentButtons{
+  display: block;
+} 
+
+.SettingsModalComponent{
+  position:absolute;
+  top:8px;
+  left: 7em;
+  color:#818181;
+}
+
+.newBlock:hover:empty::before{
+  content:attr(placeholder);
+  color:rgb(124, 124, 124);
+  font-style:italic;
+}
+.newBlock{
+  padding: 10px 0px;
+  cursor: text;
+}
+
+[contentEditable] {
+  outline: none;
+}
+
+.contentContainer{
+  padding: 30px 0px;
+}
+/* .contentContainer::placeholder {
+  background-color: lightblue;
+} */
+
+.settingsButton, .optionsButton{
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.settingsButton:hover, .optionsButton:hover{
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+
+/* --------Title Component CSS--------- */
+.titleContainer{
+ 
+  
+}
+
+.titleIcon{
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 110px;
+  height: 110px;
+  transition: opacity 100ms ease-out 0s;
+  cursor: pointer;
+}
+
+.titleIcon-cover{
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 110px;
+  height: 110px;
+  transition: opacity 100ms ease-out 0s;
+  cursor: pointer;
+  margin-top: -80px;
+}
+
+.titleButtons{
+  margin-top: 15px;
+  opacity: 0;
+  display:flex;
+  justify-content: flex-start;
+  
+  color: rgba(255, 255, 255, 0.4);
+}
+.react-icon{
+  padding-right: 6px;
+}
+.iconButton, .coverButton{
+  padding-left: 6px;
+  padding-right: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.iconButton:hover, .coverButton:hover{
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.iconContainer{
+  margin-top: 100px;
+}
+
+.titleContainer:hover .titleButtons{
+  opacity: 1;
+  transition: opacity 500ms ease-out 0s;
+} 
+
+.pageComponentTitle{
+  font-weight: 700;
+  font-size: 40px;
+  cursor: text;
+
+  white-space: pre-wrap;       /* css-3 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+.pageComponentTitle:empty::before{
+  content:attr(placeholder);
+  color:rgb(124, 124, 124);
+  font-style:italic;
+}
+
+/* ------Cover Component--------- */
+.titleCoverContainer{
+  z-index: 2;
+  width: 100%;
+  cursor: default;
+  /* position: absolute; */
+  position: relative;
+}
+
+.titleCoverImage{
+  width: 100%;
+  object-fit: cover;
+  /* object-position: center 0%; */
+  height: 30vh; 
+}
+
+.titleCoverButtons{
+  display: none;
+  position: absolute;
+  /* background-color: black; */
+  color:  white;
+  bottom:10px;
+  right:30px;
+}
+
+.titleCoverContainer:hover .titleCoverButtons{
+  display: block;
+}
+
+.titleCoverButtons .MuiButton-root{
+  color:white;
+}
+.titleCoverButtons .MuiButton-root:hover{
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* --------Quill Editor CSS--------- */
+.ql-tooltip{
+  z-index: 1000;
+}
+
+.ql-container {
+  font-size: 16px !important;
+}
+
+.ql-editor{
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  padding-left: 0 !important;
+
+}
+
+.ql-editor.ql-blank::before{
+  color: rgb(124, 124, 124) !important;
+  left:0 !important;
+  right:0 !important;
+}

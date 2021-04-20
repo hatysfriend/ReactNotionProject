@@ -1,0 +1,41 @@
+.SettingsModal{
+position: absolute;
+top:30%;
+left:22%; 
+/* transform: translate(-50%, -50%); */
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+
+width: 160px;
+
+color: rgb(255, 255, 255);
+border-radius: 5px;
+box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.2) 0px 3px 6px, rgba(15, 15, 15, 0.4) 0px 9px 24px;
+background: rgb(63, 68, 71);
+
+z-index:1000;
+
+font-size: 0.7rem;
+/* padding: 0; */
+}
+
+
+
+.overlayModal{
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:999;
+}
+
+.IconModalNavbar{
+  display:flex;
+  justify-content: space-around;
+}
+
+.IconModalInput{
+  padding: 8px;
+}
