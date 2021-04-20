@@ -91,7 +91,7 @@ export default function Login({ setToken }) {
 
           <Divider/>
 
-          {/* <div className={classes.loginWrapper}>
+          <div className={classes.loginWrapper}>
             <form onSubmit={handleSubmit}>
               <label>
                 <p>Username</p>
@@ -105,7 +105,7 @@ export default function Login({ setToken }) {
                 <button type="submit">Submit</button>
               </div>
             </form>
-          </div> */}
+          </div>
 
 
           <GoogleLogin

@@ -82,9 +82,9 @@ function App() {
 
   }
   
-  if(!token) {
-    return <LoginComponent setToken={setToken} />
-  }
+  // if(!token) {
+  //   return <LoginComponent setToken={setToken} />
+  // }
   return (
     <BrowserRouter>
       <Switch>
