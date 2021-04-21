@@ -86,7 +86,7 @@ function App() {
   //   return <LoginComponent setToken={setToken} />
   // }
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
 
         <Route exact path="/login">
