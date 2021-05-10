@@ -1,84 +1,60 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Button, Typography, CardActions, Divider } from '@material-ui/core';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin, GoogleLogout, useGoogleLogout} from 'react-google-login';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SiNotion } from 'react-icons/si';
+import UseLocalStorage from './useLocalStorage';
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:3001/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
-}
+export default function Login({setProfileObject, setLocalStorageData, logout}) {
+  
+  const [isLoggedIn, setIsLoggedIn] = useState();
 
-export default function Login({ setToken }) {
-
-  Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-  }
-
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
-  }
-
-  const history = useHistory();
+  let history = useHistory();
 
   const responseGoogle = (response) => {
-    // console.log(response);
-    axios.post("http://localhost:3001/login", { tokenId: response.tokenId })
-      .then((res) => {
-        if (res.data === "success") {
-          signOut();// ?
-          // location.assign('/dashboard');
-          history.push("/");
-        };
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    console.log(`googleResponse`, response);
+    setLocalStorageData(response.profileObj);
+    // setProfileObject(response.profileObj);
+
+    // axios.post("http://localhost:3001/login", { tokenId: response.tokenId })
+    //   .then((res) => {
+    //     // console.log(`response of /login route`, res.data);
+    //     if (res.data === "success") {
+    //       setIsLoggedIn(true);
+    //       console.log('logged in successfully!', document.cookie);
+    //       history.push("/");
+    //     };
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+
+    console.log('logged in successfully!', document.cookie);
+    history.push("/");
+  }
+  const handleLoginFailure = () => {
+    console.log('login unsuccessful... try again...');
+    history.push("/login");
   }
 
-  function signOut() {
-    // var auth2 = gapi.auth2.getAuthInstance();
-    // auth2.signOut().then(function () {
-    //   console.log("User signed out of Google.");
-    // });
+  const onSuccessfullogout = () => {
+    setIsLoggedIn(false);
+    logout();
   }
-
-  // const logout = (res) => {
-  //   res.clearCookie('sessiontoken');
-  //   res.redirect('/login');
-  // }
-
-  function googleLogin() {
-    axios.get("http://localhost:3001/auth/google")
-    .then((req, res)=>{
-      console.log(res);
-    })
-    .catch((err)=>{
-      console.error(err);
-    })
+  const handleLogoutFailure = () => {
+    console.log('logout unsuccessful... try again...');
+    history.push("/login");
   }
+  
 
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
+    
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -89,40 +65,29 @@ export default function Login({ setToken }) {
             LOGIN
           </Typography>
 
+          
           <Divider/>
 
-          <div className={classes.loginWrapper}>
-            <form onSubmit={handleSubmit}>
-              <label>
-                <p>Username</p>
-                <input type="text" placeholder="Email" onChange={e => setUsername(e.target.value)} />
-              </label>
-              <label>
-                <p>Password</p>
-                <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-              </label>
-              <div>
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
-
-
-          <GoogleLogin
-            clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com"
-            buttonText="Login with Google"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
-          />
-          <CardActions>
-            <Button onClick={googleLogin}>Google Login</Button>
-            <Button onClick={signOut}>Sign-out</Button>
-          </CardActions>
-
+          {isLoggedIn ? 
+            <GoogleLogout
+              buttonText="Logout"
+              onLogoutSuccess={onSuccessfullogout}
+              onFailure={handleLogoutFailure}
+            >
+            </GoogleLogout>
+            :
+            <GoogleLogin
+              clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com"
+              buttonText="Login with Google"
+              onSuccess={responseGoogle}
+              onFailure={handleLoginFailure}
+              cookiePolicy={'single_host_origin'}
+            />
+          }
 
         </CardContent>
       </Card>
+    
     </div>
   );
 }
@@ -152,3 +117,11 @@ const useStyles = makeStyles({
   },
 });
 
+
+{/* <GoogleLogout
+              //SHOULDN'T expose Google CLIENT_ID, need to find a way to grab it from server-side?
+              clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com"
+              buttonText="Logout" 
+              onLogoutSuccess={onSuccessfullogout}
+              onFailure={handleLogoutFailure}
+            /> */}

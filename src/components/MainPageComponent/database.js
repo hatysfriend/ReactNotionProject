@@ -83,3 +83,7 @@ export function randomCover(){
     const index = Math.floor(Math.random() * 6); 
     return imgArray[index]; 
 }
+
+// export function removeHTMLTags(str) {
+//   return str.replace(/<(.|\n)*?>/g, '').trim();
+// }

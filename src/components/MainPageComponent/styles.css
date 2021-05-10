@@ -1,0 +1,8 @@
+.MainPage {
+  display:grid;
+  grid: "nav header" min-content
+        "nav editor" 1fr / min-content 1fr;
+
+  min-height: 100vh; 
+  
+}

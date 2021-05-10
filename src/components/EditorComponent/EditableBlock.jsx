@@ -49,7 +49,7 @@ export default function EditableBlock({ block, updatePage, handleAdd, handleDele
 
   const handleOnChange = (val)=>{
     if(block.html !== val){
-      console.log(`onChange called val: ${val}`);
+      // console.log(`onChange called val: ${val}`);
       updatePage(block.id, val);
     }
   }

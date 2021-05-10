@@ -2,39 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv/config');
 const cors = require('cors');
-const noteController = require('./routes/notesController');
-const loginController = require('./routes/loginController');
-const authController = require('./routes/authController');
-
 const passport = require('passport');
-const session = require('express-session');
+const expressSession = require('express-session');
+
 
 // const {OAuth2Client} = require('google-auth-library');
 // const CLIENT_ID = process.env.CLIENT_ID;
 // const client = new OAuth2Client(CLIENT_ID);
 
-const app = express();
-app.use(cors()); 
-
-app.use(express.json()); //contains parse JSON
-
-//Passport Config
+// Passport config
 require('./passport')(passport)
-//Sessions
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false, //if resave = true, will always save, even if nothin is modified
-    saveUninitialized: false, //if false, save only when a session is initialized
-  })
-)
-//Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-//Routes
-app.use(authController);
-app.use(noteController);
-app.use(loginController);
 
 //Connect to Database
 mongoose.connect(process.env.connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -43,10 +20,39 @@ mongoose.connect(process.env.connectionString, { useNewUrlParser: true, useUnifi
   console.log(`DB Connection Error: ${err}`)
 });
 
+const app = express();
+
+app.use(cors()); 
+
+// Body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json()); //contains parse JSON
+
+
+//Express-Sessions
+// app.use(expressSession({
+//     secret: 'keyboard cat',
+//     resave: false, //if resave = true, will always save, even if nothin is modified
+//     saveUninitialized: false, //if false, save only when a session is initialized
+//   })
+// )
+
+
+//Passport Middleware
+app.use(passport.initialize())
+app.use(passport.session())
+
+//Routes
+app.use(require('./routes/authController'));
+app.use(require('./routes/notesController'));
+app.use(require('./routes/loginController'));
+
+
+
 //Set portname. In production it will use PORT from .env file, otherwise use 3001 (for development)
-const PORTno = process.env.PORT || 5000;
+const PORTno = process.env.PORT || 3001;
 app.listen(PORTno, ()=>{
-  console.log(`Server running in ${process.env.NODE_ENV} mode, on PORT:${PORTno}`)
+  console.log(`Server running in ${JSON.stringify(process.env.NODE_ENV)} mode, on PORT:${PORTno}`)
 });
 
 

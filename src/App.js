@@ -1,123 +1,64 @@
 import React, { useState, useEffect } from "react";
-
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-
-import EditorComponent from "./components/EditorComponent/Editor.jsx";
-import HeaderComponent from "./components/HeaderComponent/Header.jsx";
-import SidebarComponent from "./components/SidebarComponent/Sidebar.jsx";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginComponent from "./components/LoginComponent/Login.jsx";
-import "./App.css";
-
-import { v4 as uid } from "uuid";
-import { localDB } from "./database";
-import { getAllAPI, addNoteAPI, updateNoteAPI, deleteNoteAPI} from "./axios";
-
-import useToken from "./components/LoginComponent/useToken.js";
+import MainComponent from "./components/MainPageComponent/MainComponent.jsx";
+import './App.css';
+import UseLocalStorage from "./components/LoginComponent/useLocalStorage";
 
 function App() {
-  const [data, setData] = useState();
-
-  const [selectedNote, setSelectedNote] = useState();
-
-  const [showSidebar, setShowSidebar] = useState(true);
-
-  console.log("Custom Hook:", useToken());
-  const { token, setToken } = useToken(); //this custom hook will run on every re-render?
-
-  useEffect(() => {
-    getAllAPI()
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((err) => {
-        console.log(`Unable to connect to DB... Did you run MongoDB Server?`);
-        setData(localDB);
-        console.error(`GETALL API: ${err}`);
-      });
-  }, []);
-
-  const updateDatabase = (noteObj) => {
-    const allNotes = [...data]; //create temp array with all of the data from db
-    const index = allNotes.indexOf(noteObj); //get index of noteObj from param
-    allNotes[index] = noteObj; //replace note with new noteObj in the temp array
-    setData(allNotes);
-    updateNoteAPI(noteObj._id, noteObj);
-  };
-
-  const addNote = () => {
-    let newNoteObj = {
-      title: "",
-      content: [],
-    };
-
-    const allNotes = [...data];
-
-    addNoteAPI(newNoteObj)
-      .then((response) => {
-        if(response){
-          allNotes.push(response); //add newly added note to the temp array
-          setData(allNotes); //replace state array with the temp array
-          setSelectedNote(response);
-        }else{
-          console.log("no response");
-          newNoteObj._id = uid();
-          allNotes.push(newNoteObj); 
-          setData(allNotes); 
-          setSelectedNote(newNoteObj);
-        }
-      })
-  };
-
-  const deleteNote = (id) => {
-    deleteNoteAPI(id);
-    const filteredArray = data.filter((note) => note._id !== id); //filter out the deleted note
-    setData(filteredArray); //replace state array with filteredArray
-    setSelectedNote(data[0]);
-  };
-
-  const logout = ()=>{
-
-  }
   
-  // if(!token) {
-  //   return <LoginComponent setToken={setToken} />
+  // const [profileObject, setProfileObject] = useState();
+  const { localStorageData, setLocalStorageData } = UseLocalStorage();
+
+  const logout = () => {
+    setLocalStorageData(null);
+    console.log('logged out successfully!', document.cookie, localStorage.getItem("localStorageData"));
+  }
+
+  // const insertGapiScript = ()=>{
+  //   const script = document.createElement('script');
+  //   script.src = 'https://apis.google.com/js/plaform.js';
+  //   script.onload = ()=>{
+  //     initializeGoogleSignIn();
+  //   }
+  //   document.body.appendChild(script);
   // }
+
+  // function initializeGoogleSignIn() {
+  //   console.log('trying to initialise Google SignIn API');
+  //   window.gapi.load('auth2', () => {
+  //     window.gapi.auth2.init({
+  //       client_id: '436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com'
+  //     })
+  //     console.log('api inited');
+
+  //     // window.gapi.load('signin2', () =>{
+  //     //   const params = {
+  //     //     onSuccess: ()=>{
+  //     //       console.log('User has finished signing in!');
+  //     //     }
+  //     //   }
+  //     //   window.gapi.signin2.render('loginButton', params);
+  //     // })
+  //   })
+  // }
+
+  // useEffect(()=>{
+  //   console.log('loading');
+  //   insertGapiScript();
+  // },[])
+
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
-
         <Route exact path="/login">
-          <LoginComponent 
-            setToken={setToken}
-            logout={logout}
-          />
+          <LoginComponent setLocalStorageData={setLocalStorageData} logout={logout}/>
         </Route>
-
         <Route exact path="/">
-          <div className="App">
-              <SidebarComponent
-                data={data}
-                toggle={setShowSidebar}
-                isOpen={showSidebar}
-                selectedNote={selectedNote}
-                setSelectedNote={setSelectedNote}
-                addNote={addNote}
-                deleteNote={deleteNote}
-              />
-              <HeaderComponent toggle={setShowSidebar} isOpen={showSidebar} />
-              <EditorComponent
-                updateDatabase={updateDatabase}
-                selectedNote={selectedNote}
-              />
-            </div>
+          <MainComponent localStorageData={localStorageData} logout={logout}/>
         </Route>
-          
       </Switch>
     </BrowserRouter>
-    
   );
 }
 

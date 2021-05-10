@@ -1,15 +1,8 @@
 /* disable scrollbar on page body */
-html, body {margin: 0; height: 100%; overflow: hidden} 
-body{
+html, body{
+  margin: 0; 
+  height: 100%; 
+  overflow: hidden;
   background-color: #2f3437;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-  min-height: 100vh;
-}
-
-.App {
-  display:grid;
-  grid: "nav header" min-content
-        "nav editor" 1fr / min-content 1fr;
-
-  min-height: 100vh; 
 }

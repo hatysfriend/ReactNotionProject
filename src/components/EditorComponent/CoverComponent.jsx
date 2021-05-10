@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
-import { randomCover } from '../../database';
+import { randomCover } from '../MainPageComponent/database';
 import './EditorStyles.css';
 
 export default function CoverComponent({selectedNote, updateDatabase}) {

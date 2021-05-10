@@ -2,6 +2,17 @@ import axios from 'axios';
 
 const mongoDBapi = axios.create({baseURL:"http://localhost:3001/notes/"});
 
+export const logout = ()=>{
+  console.log(`logout...`);
+  axios.get("http://localhost:3001/logout")
+  .then((res)=>{
+    console.log(res);
+  })
+  .catch((err)=>{
+    console.error(err);
+  })
+}
+
 export const getAllAPI = ()=>{
   return mongoDBapi.get();
 }

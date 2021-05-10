@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ContentEditable from 'react-contenteditable';
 import { BsImage, BsCircleSquare } from 'react-icons/bs';
-import {randomImage, randomCover} from '../../database.js';
+import {randomImage, randomCover} from '../MainPageComponent/database.js';
 
 import './EditorStyles.css';
 import IconComponent from './IconComponent';

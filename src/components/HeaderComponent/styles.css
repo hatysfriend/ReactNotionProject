@@ -14,9 +14,21 @@
 
 .userHeader{
   margin-left: auto;
+  font-style: italic;
   /* creates 10px padding for left & right */
-  padding: 0 30px;
+  padding: 0 10px;
   white-space: nowrap;
+}
+.profileImage{
+  font-style: italic;
+  color: grey;
+  margin-left: 5px;
+  margin-right: 20px;
+  height: auto; 
+  width: auto; 
+  max-width: 25px; 
+  max-height: 25px;
+  border-radius: 50%;
 }
 .menuOpenBtnHeader{
   margin-left:10px;

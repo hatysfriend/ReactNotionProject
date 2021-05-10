@@ -15,18 +15,16 @@ router.post("/login", async (req, res) => {
       res.cookie('sessiontoken', tokenId); //create cookie
       res.send('success');
     })
-    .catch(console.error);
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
-// router.use('/login', (req, res) => {
-//   res.send({
-//     token: 'test123'
-//   });
-// });
+// router.get('/logout', (req, res)=>{
+//   console.log("attempting to clear cookies");
+//   res.clearCookie();
+//   req.logout();
+// })
 
-router.get('/logout', (req, res)=>{
-  res.clearCookie('session-token');
-  res.redirect('/login');
-})
  
 module.exports = router;
