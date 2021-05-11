@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ReactNotionProject/static/css/main.584d2781.chunk.css",
-    "main.js": "/ReactNotionProject/static/js/main.448fba9d.chunk.js",
-    "main.js.map": "/ReactNotionProject/static/js/main.448fba9d.chunk.js.map",
+    "main.js": "/ReactNotionProject/static/js/main.24d37d06.chunk.js",
+    "main.js.map": "/ReactNotionProject/static/js/main.24d37d06.chunk.js.map",
     "runtime-main.js": "/ReactNotionProject/static/js/runtime-main.0c79ad09.js",
     "runtime-main.js.map": "/ReactNotionProject/static/js/runtime-main.0c79ad09.js.map",
     "static/css/2.9248b60c.chunk.css": "/ReactNotionProject/static/css/2.9248b60c.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.9248b60c.chunk.css",
     "static/js/2.623f8960.chunk.js",
     "static/css/main.584d2781.chunk.css",
-    "static/js/main.448fba9d.chunk.js"
+    "static/js/main.24d37d06.chunk.js"
   ]
 }
