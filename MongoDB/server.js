@@ -11,7 +11,7 @@ const expressSession = require('express-session');
 // const client = new OAuth2Client(CLIENT_ID);
 
 // Passport config
-require('./passport')(passport)
+// require('./passport')(passport)
 
 //Connect to Database
 mongoose.connect(process.env.connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -39,8 +39,8 @@ app.use(express.json()); //contains parse JSON
 
 
 //Passport Middleware
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 //Routes
 app.use(require('./routes/authController'));

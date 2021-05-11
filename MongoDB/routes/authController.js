@@ -9,7 +9,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile'] 
 
 //Google Auth Callback
 router.get("/auth/google/callback", passport.authenticate('google', { failureRedirect: '/login' }), (req, res)=>{
-  res.redirect('/note-project');
+  // res.redirect('/note-project');
 });
 
 //logout
@@ -17,7 +17,7 @@ router.get("/auth/google/callback", passport.authenticate('google', { failureRed
 // @route   /auth/logout
 router.get('/auth/logout', (req, res) => {
   req.logout();
-  res.redirect('/note-project/login');
+  // res.redirect('/note-project/login');
 })
 
 

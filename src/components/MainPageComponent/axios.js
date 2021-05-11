@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const mongoDBapi = axios.create({baseURL:"http://localhost:3001/notes/"});
+const localURI ="http://localhost:3001/notes/";
+const herokuAPI = "https://mongodb-server-app.herokuapp.com/notes/"
+const mongoDBapi = axios.create({baseURL:herokuAPI});
 
 export const logout = ()=>{
   console.log(`logout...`);
