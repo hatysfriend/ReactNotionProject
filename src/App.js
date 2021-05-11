@@ -7,7 +7,7 @@ import UseLocalStorage from "./components/LoginComponent/useLocalStorage";
 
 function App() {
   
-  // const [profileObject, setProfileObject] = useState();
+  
   const { localStorageData, setLocalStorageData } = UseLocalStorage();
 
   const logout = () => {
