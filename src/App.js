@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, useHistory, Route, Switch } from "react-router-dom";
 import LoginComponent from "./components/LoginComponent/Login.jsx";
 import MainComponent from "./components/MainPageComponent/MainComponent.jsx";
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   
   
   const { localStorageData, setLocalStorageData } = UseLocalStorage();
-
+  
   const logout = () => {
     setLocalStorageData(null);
     console.log('logged out successfully!', document.cookie, localStorage.getItem("localStorageData"));

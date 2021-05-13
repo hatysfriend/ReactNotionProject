@@ -9,8 +9,6 @@ export default function Header({toggle, isOpen, profileObject, logout}) {
 
   const history = useHistory();
 
-
-
   const logoutSuccess = ()=>{
     console.log('logout success')
     logout();
@@ -25,14 +23,14 @@ export default function Header({toggle, isOpen, profileObject, logout}) {
       <div className="shareBtnHeader">Share</div>
       <div className="updateBtnHeader"><Check/>Updates</div>
       <div className="settingsBtnHeader"><MoreHoriz/></div>
-      {/* <div className="logoutBtnHeader" onClick={logoutSuccess}>Logout</div> */}
-      <GoogleLogout 
+      <div className="logoutBtnHeader" onClick={logoutSuccess}>Logout</div>
+      {/* <GoogleLogout 
         clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com" 
         onLogoutSuccess={logoutSuccess}
         render={renderProps => (
           <div className="logoutBtnHeader" onClick={renderProps.onClick} disabled={renderProps.disabled}> Logout </div>
         )}
-      />
+      /> */}
     </div>
   )
 }
