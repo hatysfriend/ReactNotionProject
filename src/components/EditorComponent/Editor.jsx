@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import EditableBlock from './EditableBlock';
 import TitleComponent from './TitleComponent';
 import './EditorStyles.css';

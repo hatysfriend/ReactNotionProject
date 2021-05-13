@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Button, Typography, CardActions, Divider } from '@material-ui/core';
-import { GoogleLogin, GoogleLogout, useGoogleLogout} from 'react-google-login';
-import axios from 'axios';
-import { Redirect, useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Card, CardContent, Typography, Divider } from '@material-ui/core';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+// import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import { SiNotion } from 'react-icons/si';
-import UseLocalStorage from './useLocalStorage';
 
-export default function Login({setProfileObject, setLocalStorageData, logout}) {
+export default function Login({ setLocalStorageData, logout }) {
   
   const [isLoggedIn, setIsLoggedIn] = useState();
 
@@ -17,7 +15,6 @@ export default function Login({setProfileObject, setLocalStorageData, logout}) {
   const responseGoogle = (response) => {
     console.log(`googleResponse`, response);
     setLocalStorageData(response.profileObj);
-    // setProfileObject(response.profileObj);
 
     // axios.post("http://localhost:3001/login", { tokenId: response.tokenId })
     //   .then((res) => {
@@ -116,12 +113,3 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-
-
-{/* <GoogleLogout
-              //SHOULDN'T expose Google CLIENT_ID, need to find a way to grab it from server-side?
-              clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com"
-              buttonText="Logout" 
-              onLogoutSuccess={onSuccessfullogout}
-              onFailure={handleLogoutFailure}
-            /> */}

@@ -1,9 +1,8 @@
 import React from 'react'
 import {DoubleArrowRounded, Check, MoreHoriz} from '@material-ui/icons'; 
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+// import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
-import { Divider } from '@material-ui/core';
 
 export default function Header({toggle, isOpen, profileObject, logout}) {
 

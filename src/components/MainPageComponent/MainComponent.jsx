@@ -6,7 +6,6 @@ import SidebarComponent from "../../components/SidebarComponent/Sidebar.jsx";
 import { v4 as uid } from "uuid";
 import { localDB } from "./database";
 import { getAllAPI, addNoteAPI, updateNoteAPI, deleteNoteAPI} from "./axios";
-import {Redirect, useHistory} from 'react-router-dom';
 
 import './styles.css';
 
@@ -18,9 +17,6 @@ export default function MainComponent({localStorageData, logout}) {
   const [selectedNote, setSelectedNote] = useState();
 
   const [showSidebar, setShowSidebar] = useState(true);
-
-  const [authorised, setAuthorised] = useState(true);
-
 
   useEffect(() => {
     getAllAPI()

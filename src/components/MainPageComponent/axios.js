@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const localURI ="http://localhost:3001/notes/";
+// const localURI ="http://localhost:3001/notes/";
 const herokuAPI = "https://mongodb-server-app.herokuapp.com/notes/"
 const mongoDBapi = axios.create({baseURL:herokuAPI});
 

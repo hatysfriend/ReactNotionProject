@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import ContentEditable from 'react-contenteditable';
 import { BsImage, BsCircleSquare } from 'react-icons/bs';
 import {randomImage, randomCover} from '../MainPageComponent/database.js';

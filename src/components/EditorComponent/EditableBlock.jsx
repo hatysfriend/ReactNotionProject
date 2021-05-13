@@ -1,5 +1,5 @@
-import React, {useState, useRef} from 'react';
-import ReactQuill, {Quill} from 'react-quill';
+import React, {useState} from 'react';
+import ReactQuill from 'react-quill';
 
 // import CustomQuillToolbar, { modules, formats } from '../CustomQuill/CustomQuillToolbar';
 import SettingsModalComponent from '../modals/SettingsModalComponent';
@@ -12,10 +12,8 @@ import 'react-quill/dist/quill.bubble.css'
 export default function EditableBlock({ block, updatePage, handleAdd, handleDelete }) {
 
   const [settingsModal, setSettingsModal] = useState(false);
-  const [previousKey, setPreviousKey] = useState(null);
+  // const [previousKey, setPreviousKey] = useState(null);
   const [empty, setEmpty] = useState('');
-
-  const blockRef = useRef(block.html);
   
   const onKeyDownHandler = (e) => { 
     (block.html==="<p><br></p>") ? setEmpty(true) : setEmpty(false);
@@ -43,7 +41,7 @@ export default function EditableBlock({ block, updatePage, handleAdd, handleDele
     //   handleAdd();
     // }
     
-    setPreviousKey(e.key);
+    // setPreviousKey(e.key);
   }
 
 

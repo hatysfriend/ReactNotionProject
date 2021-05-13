@@ -1,5 +1,5 @@
 import React from 'react'
-import { ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
+import { ListItem, ListItemText } from '@material-ui/core';
 import { ArrowRight, DescriptionOutlined, DeleteForeverOutlined } from '@material-ui/icons';
 import './styles.css';
 

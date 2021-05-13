@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, useHistory, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginComponent from "./components/LoginComponent/Login.jsx";
 import MainComponent from "./components/MainPageComponent/MainComponent.jsx";
 import './App.css';
