@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography, Divider } from '@material-ui/core';
+import { Typography, Divider } from '@material-ui/core';
 import { SiNotion } from 'react-icons/si';
 import GoogleLoginComponent from './GoogleLoginComponent';
 import GoogleLogoutComponent from './GoogleLogoutComponent';
@@ -8,51 +8,49 @@ import GoogleLogoutComponent from './GoogleLogoutComponent';
 export default function Login({ setLocalStorageData, logout }) {
 
   const classes = useStyles();
-  
+
   return (
     <div className={classes.container}>
-    
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-          <SiNotion className="SiIcons"/> Notion React App
-          </Typography>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          <SiNotion className="SiIcons" /> Notion React App
+        </Typography>
 
-          <Typography variant="h5" component="h2">
-            LOGIN
-          </Typography>
+        <Typography className={classes.title2} variant="h5" component="h2">
+          Login
+        </Typography>
 
-          <Divider />
-          <GoogleLoginComponent setLocalStorageData={setLocalStorageData} />
-          <GoogleLogoutComponent setLocalStorageData={setLocalStorageData} />
-        </CardContent>
-      </Card>
-    
+        <Divider />
+
+        <GoogleLoginComponent setLocalStorageData={setLocalStorageData} />
+        <GoogleLogoutComponent setLocalStorageData={setLocalStorageData} />
     </div>
   );
 }
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly'
+    width: '350px',
+    height: '250px',
+    backgroundColor: 'white',
+    position: 'absolute', 
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    margin: 'auto',
+    padding: '30px 10px',
+    
+    maxWidth: '100%',
+    maxHeight: '100%',
+    overflow: 'none',
+    borderRadius: '5px',
 
   },
-  card: {
-    margin: 100,
-    minWidth: 400,
-    alignSelf: 'center'
-  },
-  loginWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
   title: {
-    fontSize: 14,
+    fontSize: 16,
+    margin: '0px 10px',
   },
-  pos: {
-    marginBottom: 12,
-  },
+  title2: {
+    margin: '5px 10px',
+  }
 });

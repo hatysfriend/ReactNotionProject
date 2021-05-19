@@ -27,40 +27,43 @@ export default function GoogleLogoutComponent({setLocalStorageData}) {
 
   return (
     <div>
-      <button onClick={signOut} className={classes.button}>
-      <img src="google.svg" alt="google login" className={classes.icon}></img>
-      <span className={classes.buttonText}>Sign out</span>
-    </button>
+      <div onClick={signOut} className={classes.button}>
+        <img src="google.svg" alt="google login" className={classes.icon}></img>
+        <span className={classes.buttonText}>Sign out</span>
+      </div>
     </div>
     
   )
 }
 
 const useStyles = makeStyles({
-  // button: {
-  //   cursor: 'pointer',
-  //   display: 'block',
-  //   fontSize: '1.3em',
-  //   boxSizing: 'content-box',
-  //   margin: '20px auto 0px',
-  //   width: '70%',
-  //   padding: '15px 20px',
-  //   borderRadius: '24px',
-  //   borderColor: 'transparent',
-  //   backgroundColor: 'white',
-  //   boxShadow: '0px 16px 60px rgba(78, 79, 114, 0.08)',
-  //   position: 'relative',
-  // },
-  // buttonText: {
-  //   color: '#4285f4',
+  button: {
+    position: 'relative',
+    cursor: 'pointer',
+    display: 'block',
+    fontSize: '1.2em',
+    boxSizing: 'content-box',
+    margin: '20px auto 0px',
+    width: '70%',
+    padding: '15px 20px',
+    // borderRadius: '18px',
+    borderColor: 'transparent',
+    backgroundColor: 'rgba(47, 52, 55, 1)',
+    boxShadow: '0px 16px 60px rgba(78, 79, 114, 0.38)',
+    textAlign: 'center',
     
-  // },
-  // icon: {
-  //   height: '25px',
-  //   width: '25px',
-  //   marginRight: '0px',
-  //   position: 'absolute',
-  //   left: '30px',
-  //   alignItems: 'center',
-  // }
+    '&:hover': {
+      background: 'rgba(47, 52, 55, 0.9)',
+    }
+  },
+  buttonText: {
+    color: 'white',
+    
+  },
+  icon: {
+    marginRight:'5px',
+    height: '25px',
+    width: '25px',
+    alignItems: 'center',
+  }
 });

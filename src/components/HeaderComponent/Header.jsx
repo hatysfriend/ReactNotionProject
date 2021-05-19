@@ -15,7 +15,7 @@ export default function Header({toggle, isOpen, profileObject, logout, setLocalS
       <div className="settingsBtnHeader"><MoreHoriz/></div>
       {/* <div className="logoutBtnHeader" onClick={logoutSuccess}>Logout</div> */}
       
-      <GoogleLogoutComponent 
+      <GoogleLogoutComponent className="logoutBtnHeader"
         setLocalStorageData={setLocalStorageData}
       />
     </div>
