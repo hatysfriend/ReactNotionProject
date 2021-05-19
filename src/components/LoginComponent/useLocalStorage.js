@@ -12,16 +12,16 @@ export default function useLocalStorage() {
   const saveData = (data) => {
     console.log('saving data to LocalStorage', data);
     localStorage.setItem('localStorageData', JSON.stringify(data));
-    setLocalStorageData(data);
+    setLocalStorage(data);
 
     //Remove localStorageData if received data is null
     if(!data){localStorage.removeItem('localStorageData')}; 
   };
 
-  const [localStorageData, setLocalStorageData] = useState(initialiseToken);
+  const [localStorageData, setLocalStorage] = useState(initialiseToken);
 
   return {
+    localStorageData: localStorageData,
     setLocalStorageData: saveData,
-    localStorageData: localStorageData
   }
 }

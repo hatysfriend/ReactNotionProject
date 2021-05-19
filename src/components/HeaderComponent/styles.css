@@ -19,9 +19,11 @@
   padding: 0 10px;
   white-space: nowrap;
 }
-.profileImage{
+.userHeader-2{
   font-style: italic;
   color: grey;
+}
+.profileImage{
   margin-left: 5px;
   margin-right: 20px;
   height: auto; 

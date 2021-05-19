@@ -9,9 +9,8 @@ import { getAllAPI, addNoteAPI, updateNoteAPI, deleteNoteAPI} from "./axios";
 
 import './styles.css';
 
-export default function MainComponent({localStorageData, logout}) {
+export default function MainComponent({localStorageData, setLocalStorageData, logout}) {
 
-  
   const [data, setData] = useState();
 
   const [selectedNote, setSelectedNote] = useState();
@@ -89,7 +88,7 @@ export default function MainComponent({localStorageData, logout}) {
         addNote={addNote}
         deleteNote={deleteNote}
       />
-      <HeaderComponent toggle={setShowSidebar} isOpen={showSidebar} profileObject={localStorageData} logout={logout}/>
+      <HeaderComponent toggle={setShowSidebar} isOpen={showSidebar} profileObject={localStorageData} setLocalStorageData={setLocalStorageData} logout={logout}/>
       <EditorComponent
         updateDatabase={updateDatabase}
         selectedNote={selectedNote}

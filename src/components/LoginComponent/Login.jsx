@@ -1,54 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, Divider } from '@material-ui/core';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
-// import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import { SiNotion } from 'react-icons/si';
+import GoogleLoginComponent from './GoogleLoginComponent';
+import GoogleLogoutComponent from './GoogleLogoutComponent';
 
 export default function Login({ setLocalStorageData, logout }) {
-  
-  const [isLoggedIn, setIsLoggedIn] = useState();
-
-  let history = useHistory();
-
-  const responseGoogle = (response) => {
-    console.log(`googleResponse`, response);
-    setLocalStorageData(response.profileObj);
-
-    // axios.post("http://localhost:3001/login", { tokenId: response.tokenId })
-    //   .then((res) => {
-    //     // console.log(`response of /login route`, res.data);
-    //     if (res.data === "success") {
-    //       setIsLoggedIn(true);
-    //       console.log('logged in successfully!', document.cookie);
-    //       history.push("/");
-    //     };
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-
-    console.log('logged in successfully!', document.cookie);
-    history.push("/");
-  }
-  const handleLoginFailure = () => {
-    console.log('login unsuccessful... try again...');
-    history.push("/login");
-  }
-
-  const onSuccessfullogout = () => {
-    setIsLoggedIn(false);
-    logout();
-  }
-  const handleLogoutFailure = () => {
-    console.log('logout unsuccessful... try again...');
-    history.push("/login");
-  }
-  
 
   const classes = useStyles();
-
+  
   return (
     <div className={classes.container}>
     
@@ -62,26 +22,9 @@ export default function Login({ setLocalStorageData, logout }) {
             LOGIN
           </Typography>
 
-          
-          <Divider/>
-
-          {isLoggedIn ? 
-            <GoogleLogout
-              buttonText="Logout"
-              onLogoutSuccess={onSuccessfullogout}
-              onFailure={handleLogoutFailure}
-            >
-            </GoogleLogout>
-            :
-            <GoogleLogin
-              clientId="436581585233-tfe7t63pqblerrrn0ua9n7j9hjfv3bki.apps.googleusercontent.com"
-              buttonText="Login with Google"
-              onSuccess={responseGoogle}
-              onFailure={handleLoginFailure}
-              cookiePolicy={'single_host_origin'}
-            />
-          }
-
+          <Divider />
+          <GoogleLoginComponent setLocalStorageData={setLocalStorageData} />
+          <GoogleLogoutComponent setLocalStorageData={setLocalStorageData} />
         </CardContent>
       </Card>
     

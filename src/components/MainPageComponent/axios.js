@@ -1,12 +1,24 @@
 import axios from 'axios';
 
-// const localURI ="http://localhost:3001/notes/";
-const herokuAPI = "https://mongodb-server-app.herokuapp.com/notes/"
+// const localURI ="http://localhost:3001/";
+const herokuAPI = "https://mongodb-server-app.herokuapp.com/"
 const mongoDBapi = axios.create({baseURL:herokuAPI});
+
+export const login = (tokenId) => {
+  mongoDBapi.post("login", { tokenId: tokenId })
+  .then((res) => {
+    if (res.data === "success") {
+      
+    };
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+}
 
 export const logout = ()=>{
   console.log(`logout...`);
-  axios.get("http://localhost:3001/logout")
+  mongoDBapi.get("logout")
   .then((res)=>{
     console.log(res);
   })
@@ -16,11 +28,11 @@ export const logout = ()=>{
 }
 
 export const getAllAPI = ()=>{
-  return mongoDBapi.get();
+  return mongoDBapi.get("notes");
 }
 
 export const addNoteAPI = (noteObj)=>{
-  return mongoDBapi.post("", noteObj)
+  return mongoDBapi.post("notes", noteObj)
   .then((response)=>{
       return response.data;
   })
@@ -30,7 +42,7 @@ export const addNoteAPI = (noteObj)=>{
 } 
 
 export const getNoteByIdAPI = (id)=>{
-  return mongoDBapi.get(`${id}`)
+  return mongoDBapi.get(`notes/${id}`)
   .then((response)=>{
       return response.data;
   })
@@ -40,7 +52,7 @@ export const getNoteByIdAPI = (id)=>{
 }
 
 export const updateNoteAPI = (id, noteObj)=>{
-  return mongoDBapi.patch(`${id}`, noteObj)
+  return mongoDBapi.patch(`notes/${id}`, noteObj)
   .then((response)=>{
       return response.data;
   })
@@ -50,7 +62,7 @@ export const updateNoteAPI = (id, noteObj)=>{
 }
 
 export const deleteNoteAPI = (id)=>{
-  return mongoDBapi.delete(`${id}`)
+  return mongoDBapi.delete(`notes/${id}`)
   .then((response)=>{
       return response.data;
   })
