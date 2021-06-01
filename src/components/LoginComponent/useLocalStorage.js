@@ -5,12 +5,12 @@ export default function useLocalStorage() {
   const initialiseToken = () => {
     const data = localStorage.getItem('localStorageData');
     const dataObject = JSON.parse(data);
-    console.log(`checking local storage for 'data': ${JSON.stringify(dataObject)}`);
+    // console.log(`checking local storage for 'data': ${JSON.stringify(dataObject)}`);
     return dataObject;
   };
 
   const saveData = (data) => {
-    console.log('saving data to LocalStorage', data);
+    // console.log('saving data to LocalStorage', data);
     localStorage.setItem('localStorageData', JSON.stringify(data));
     setLocalStorage(data);
 
