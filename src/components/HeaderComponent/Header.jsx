@@ -1,9 +1,11 @@
 import React from 'react'
 import {DoubleArrowRounded, Check, MoreHoriz} from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 import GoogleLogoutComponent from '../LoginComponent/GoogleLogoutComponent'
 import './styles.css';
 
-export default function Header({toggle, isOpen, profileObject, logout, setLocalStorageData}) {
+export default function Header({toggle, isOpen, profileObject, setLocalStorageData}) {
+  const classes = useStyles();
 
   return (
     <div className="Header">
@@ -13,14 +15,26 @@ export default function Header({toggle, isOpen, profileObject, logout, setLocalS
       <div className="shareBtnHeader">Share</div>
       <div className="updateBtnHeader"><Check/>Updates</div>
       <div className="settingsBtnHeader"><MoreHoriz/></div>
-      {/* <div className="logoutBtnHeader" onClick={logoutSuccess}>Logout</div> */}
+      <div className="logoutBtnHeader">
+        <GoogleLogoutComponent
+          setLocalStorageData={setLocalStorageData}
+          iconStyle={classes.icon}
+        />
+      </div>
       
-      <GoogleLogoutComponent className="logoutBtnHeader"
-        setLocalStorageData={setLocalStorageData}
-      />
+      
     </div>
   )
 }
+
+const useStyles = makeStyles({
+  icon: {
+    marginRight:'5px',
+    height: '25px',
+    width: '25px',
+    alignItems: 'center',
+  }
+});
 
 
 

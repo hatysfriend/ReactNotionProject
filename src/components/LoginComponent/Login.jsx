@@ -21,8 +21,18 @@ export default function Login({ setLocalStorageData, logout }) {
 
         <Divider />
 
-        <GoogleLoginComponent setLocalStorageData={setLocalStorageData} />
-        <GoogleLogoutComponent setLocalStorageData={setLocalStorageData} />
+        <GoogleLoginComponent 
+          setLocalStorageData={setLocalStorageData} 
+          buttonStyle={classes.button} 
+          buttonTextStyle={classes.buttonText}
+          iconStyle={classes.icon}
+        />
+        <GoogleLogoutComponent
+          setLocalStorageData={setLocalStorageData} 
+          buttonStyle={classes.button} 
+          buttonTextStyle={classes.buttonText}
+          iconStyle={classes.icon}
+        />
     </div>
   );
 }
@@ -52,5 +62,34 @@ const useStyles = makeStyles({
   },
   title2: {
     margin: '5px 10px',
+  },
+  button: {
+    position: 'relative',
+    cursor: 'pointer',
+    display: 'block',
+    fontSize: '1.2em',
+    boxSizing: 'content-box',
+    margin: '20px auto 0px',
+    width: '70%',
+    padding: '15px 20px',
+    borderRadius: '30px',
+    borderColor: 'transparent',
+    backgroundColor: 'rgba(224, 227, 229, 1)',
+    boxShadow: '0px 16px 60px rgba(78, 79, 114, 0.38)',
+    textAlign: 'center',
+    
+    '&:hover': {
+      background: 'rgba(224, 227, 229, 0.9)',
+    }
+  },
+  buttonText: {
+    color: 'black',
+    
+  },
+  icon: {
+    marginRight:'5px',
+    height: '25px',
+    width: '25px',
+    alignItems: 'center',
   }
 });
