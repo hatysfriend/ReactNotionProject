@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/ReactNotionProject/static/css/main.46778729.chunk.css",
-    "main.js": "/ReactNotionProject/static/js/main.32a1e728.chunk.js",
-    "main.js.map": "/ReactNotionProject/static/js/main.32a1e728.chunk.js.map",
+    "main.css": "/ReactNotionProject/static/css/main.46ea6d0e.chunk.css",
+    "main.js": "/ReactNotionProject/static/js/main.640a0bfd.chunk.js",
+    "main.js.map": "/ReactNotionProject/static/js/main.640a0bfd.chunk.js.map",
     "runtime-main.js": "/ReactNotionProject/static/js/runtime-main.0c79ad09.js",
     "runtime-main.js.map": "/ReactNotionProject/static/js/runtime-main.0c79ad09.js.map",
     "static/css/2.9248b60c.chunk.css": "/ReactNotionProject/static/css/2.9248b60c.chunk.css",
-    "static/js/2.a098992f.chunk.js": "/ReactNotionProject/static/js/2.a098992f.chunk.js",
-    "static/js/2.a098992f.chunk.js.map": "/ReactNotionProject/static/js/2.a098992f.chunk.js.map",
+    "static/js/2.5f39e999.chunk.js": "/ReactNotionProject/static/js/2.5f39e999.chunk.js",
+    "static/js/2.5f39e999.chunk.js.map": "/ReactNotionProject/static/js/2.5f39e999.chunk.js.map",
     "index.html": "/ReactNotionProject/index.html",
     "static/css/2.9248b60c.chunk.css.map": "/ReactNotionProject/static/css/2.9248b60c.chunk.css.map",
-    "static/css/main.46778729.chunk.css.map": "/ReactNotionProject/static/css/main.46778729.chunk.css.map",
-    "static/js/2.a098992f.chunk.js.LICENSE.txt": "/ReactNotionProject/static/js/2.a098992f.chunk.js.LICENSE.txt"
+    "static/css/main.46ea6d0e.chunk.css.map": "/ReactNotionProject/static/css/main.46ea6d0e.chunk.css.map",
+    "static/js/2.5f39e999.chunk.js.LICENSE.txt": "/ReactNotionProject/static/js/2.5f39e999.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0c79ad09.js",
     "static/css/2.9248b60c.chunk.css",
-    "static/js/2.a098992f.chunk.js",
-    "static/css/main.46778729.chunk.css",
-    "static/js/main.32a1e728.chunk.js"
+    "static/js/2.5f39e999.chunk.js",
+    "static/css/main.46ea6d0e.chunk.css",
+    "static/js/main.640a0bfd.chunk.js"
   ]
 }
