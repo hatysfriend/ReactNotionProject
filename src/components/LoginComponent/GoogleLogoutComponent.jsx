@@ -26,7 +26,7 @@ export default function GoogleLogoutComponent({setLocalStorageData, buttonStyle,
   return (
     <div>
       <div onClick={signOut} className={buttonStyle}>
-        <img src="google.svg" alt="google login" className={iconStyle}></img>
+        <img src="google.svg" alt="" className={iconStyle}></img>
         <span className={buttonTextStyle}>Sign out</span>
       </div>
     </div>

@@ -75,6 +75,9 @@
   background-color: #474d52;
 }
 
+.MuiTypography-body1 {
+  font-size: 15px !important;
+}
 
 /* When <ListItem> selected == true */
 .MuiListItem-root.Mui-selected{
@@ -94,9 +97,10 @@
 }
 
 .sidebarIcon{
-  margin-right: 8px;
+  margin: 0px 8px;
+  
   object-fit: cover;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   width: 18px;
   height: 18px;
 }

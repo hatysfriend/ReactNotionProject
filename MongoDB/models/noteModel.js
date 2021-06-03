@@ -16,6 +16,10 @@ const noteSchema = mongoose.Schema({
   coverImage:{
     type: String,
     default: null,
+  },
+  childPages:{
+    type: Array,
+    default:[]
   }
 });
 

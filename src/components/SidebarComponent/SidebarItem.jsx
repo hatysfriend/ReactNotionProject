@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListItem, ListItemText } from '@material-ui/core';
-import { ArrowRight, DescriptionOutlined, DeleteForeverOutlined } from '@material-ui/icons';
+import { ArrowRight, DescriptionOutlined, DeleteForeverOutlined, AddBoxOutlined } from '@material-ui/icons';
 import './styles.css';
 
 export default function SidebarItem({ note, selectedNote, setSelectedNote, deleteNote }) {
@@ -15,6 +15,11 @@ export default function SidebarItem({ note, selectedNote, setSelectedNote, delet
   const handleDelete = (e) => {
     e.stopPropagation(); 
     deleteNote(note._id);
+  }
+
+  const handleAddChildPage = (e) => {
+    e.stopPropagation(); 
+    console.log("Add Child Page Button, Parent Page:", note )
   }
 
   return (
@@ -33,6 +38,8 @@ export default function SidebarItem({ note, selectedNote, setSelectedNote, delet
       <ListItemText className="textSection" primary={modifyDisplayString(note.title)} />
 
       <DeleteForeverOutlined className="SidebarItemSettings" onClick={(e) => { handleDelete(e);}} />
+
+      <AddBoxOutlined className="SidebarItemSettings" onClick={(e) => { handleAddChildPage(e);}} />
 
     </ListItem>
   )

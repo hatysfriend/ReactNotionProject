@@ -29,7 +29,7 @@ export default function GoogleLoginComponent({setLocalStorageData, buttonStyle, 
   return (
     <div>
       <button onClick={signIn} className={buttonStyle}>
-        <img src="google.svg" alt="google login" className={iconStyle}></img>
+        <img src="google.svg" alt="" className={iconStyle}></img>
         <span className={buttonTextStyle}>Sign in with Google</span>
       </button>
     </div>
